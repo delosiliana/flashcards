@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Flashcards</title>
+    <title>Флэшкарточкер</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,9 @@
   </head>
 
   <body>
-    <%= yield %>
+    <section id="container">
+      <%= render 'layouts/header'%>
+      <%= yield %>
+    </section>
   </body>
 </html>
