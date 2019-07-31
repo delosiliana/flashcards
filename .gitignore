@@ -29,3 +29,45 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+.DS_Store
+/doc
+/.yardoc/*
+/.vscode/*
+/.idea/*
+
+.idea
+
+/doc/examples
+config/database.yml
+config/private_pub.yml
+config/secrets.yml
+
+
+# Ignore uploaded files
+/public/system
+/public/tmp
+/public/uploads
+/public/spec
+/public/assets
+
+
+# coverage files
+/coverage
+
+.powrc
+
+certs/
+
+/log
+.powenv
+
+.env
+
+# Ignore application configuration
+/config/application.yml
+.zeus.sock
+
+dump.rdb
+config/*.sphinx.conf
+db/sphinx
