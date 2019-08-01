@@ -13,8 +13,6 @@ class Card < ApplicationRecord
   end
 
   def check_text
-    if original_text.casecmp?(translated_text)
-      errors.add(:translated_text, 'Должна быть разница между оригинальным и переведенным текстом')
-    end
+    return errors.add(:translated_text, 'Должна быть разница между оригинальным и переведенным текстом') if original_text.casecmp?(translated_text)
   end
 end
