@@ -6,9 +6,6 @@ AllCops:
     - '**/Gemfile'
     - '**/gems.rb'
 
-Rails:
-  Enabled: true
-
 Metrics/LineLength:
   Enabled: true
   Max: 120
