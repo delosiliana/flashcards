@@ -5,6 +5,8 @@ AllCops:
     - '**/*.gemfile'
     - '**/Gemfile'
     - '**/gems.rb'
+    - 'config/initializers/simple_form.rb'
+    - 'config/initializers/simple_form_bootstrap.rb'
 
 Metrics/LineLength:
   Enabled: true
