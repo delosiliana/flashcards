@@ -2,7 +2,7 @@ class CardsController < ApplicationController
   before_action :set_card, only: [:edit, :update, :destroy]
 
   def index
-    @cards = Card.all
+    @cards = Card.all.on_review_date
   end
 
   def new
