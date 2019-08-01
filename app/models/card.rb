@@ -13,8 +13,7 @@ class Card < ApplicationRecord
   end
 
   def check_text
-    if original_text.downcase != translated_text.downcase
-    else
+    if original_text.downcase == translated_text.downcase
       errors.add(:translated_text, 'Должна быть разница между оригинальным и переведенным текстом')
     end
   end
