@@ -21,7 +21,7 @@ class CardsController < ApplicationController
   def edit; end
 
   def update
-    if @card.update
+    if @card.update(card_params)
       redirect_to cards_path, notice: 'Карточка изменена'
     else
       render :edit

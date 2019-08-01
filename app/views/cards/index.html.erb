@@ -1,10 +1,13 @@
 <div class="container">
+<h1><center>Полный список карточек</center></h1>
   <table class = "table">
     <thead>
       <tr>
         <th>Оригинал</th>
         <th>Перевод</th>
         <th>Дата</th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -13,6 +16,8 @@
           <td><%= c.original_text %></td>
           <td><%= c.translated_text %></td>
           <td><%= c.review_date&.strftime("%d/%m/%Y") %></td>
+          <td><%= link_to 'Редактировать', edit_card_path(c.id) %></td>
+          <td><%= link_to 'Удалить', c, method: :delete, data: { confirm: 'Вы уверены?'} %></td>
         </tr>
       <% end %>
     </tbody>
