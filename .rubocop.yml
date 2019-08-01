@@ -1,19 +1,29 @@
 AllCops:
   Exclude:
-    - config/initializers/secret_token.rb
+    - 'config/initializers/secret_token.rb'
     - 'db/schema.rb'
+    - '**/*.gemfile'
+    - '**/Gemfile'
+    - '**/gems.rb'
 
 Rails:
   Enabled: true
-
-Style/FrozenStringLiteralComment:
-  Enabled: false
 
 Metrics/LineLength:
   Enabled: true
   Max: 120
 
+## Style
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
 Style/Documentation:
+  Enabled: false
+
+Style/SymbolArray:
+  Description: 'Use %i or %I for arrays of symbols.'
+  StyleGuide: '#percent-i'
   Enabled: false
 
 Style/StringLiterals:
