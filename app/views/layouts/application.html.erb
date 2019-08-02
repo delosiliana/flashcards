@@ -16,5 +16,10 @@
       <%= render 'layouts/header'%>
       <%= yield %>
     </section>
+    <% flash.each do |key, value| %>
+      <flash class=<%="flash-#{key}"%>>
+        <%= value %>
+      </flash>
+    <% end %>
   </body>
 </html>

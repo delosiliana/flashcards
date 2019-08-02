@@ -5,6 +5,21 @@ class Card < ApplicationRecord
   before_validation :set_review_date, only: :create
 
   scope :on_review_date, -> { order(review_date: :desc) }
+  scope :sort_random, -> { order('RANDOM()') }
+  scope :dated, -> { where('review_date <= ?', Date.today) }
+
+  def check_original_text_answer(answer)
+    if original_text.casecmp?(answer)
+      reset_review_date
+    else
+      false
+    end
+  end
+
+  def reset_review_date
+    set_review_date
+    save!
+  end
 
   private
 

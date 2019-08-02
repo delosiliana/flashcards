@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  before_action :set_card, only: [:edit, :update, :destroy]
+  before_action :set_card, only: [:edit, :update, :destroy, :check_original_text_card]
 
   def index
     @cards = Card.all.on_review_date
@@ -33,6 +33,14 @@ class CardsController < ApplicationController
       redirect_to cards_path, notice: 'Карточка удалена'
     else
       redirect_to cards_path, notice: 'Произошла ошибка'
+    end
+  end
+
+  def check_original_text_card
+    if @card.check_original_text_answer(params[:answer])
+      redirect_to flashcards_index_path, notice: 'Верно'
+    else
+      redirect_to flashcards_index_path, alert: "Не угадал, правильный ответ: #{@card.original_text}"
     end
   end
 
