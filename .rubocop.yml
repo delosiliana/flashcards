@@ -10,7 +10,7 @@ AllCops:
 
 Metrics/LineLength:
   Enabled: true
-  Max: 150
+  Max: 170
 
 ## Style
 

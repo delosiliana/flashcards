@@ -1,5 +1,3 @@
-require 'open-uri'
-
 class ParseDate
   attr_accessor :url
   attr_accessor :path
