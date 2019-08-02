@@ -10,7 +10,7 @@ class ParseDate
   end
 
   def parsing
-    doc = Nokogiri::HTML(open(url))
+    doc = Nokogiri::HTML(URI.parse(url).open)
     list = doc.xpath(path)
     list.each_slice(2) do |original, translated|
       Card.create(original_text: original.text, translated_text: translated.text)
