@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+a = ParseDate.new('https://1000mostcommonwords.com/1000-most-common-italian-words', '//* [@id="post-55"]/div/table/tbody/tr[position() > 1]/td[position() > 1]')
+
+a.parsing
