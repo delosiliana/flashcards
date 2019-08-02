@@ -10,7 +10,7 @@ class Card < ApplicationRecord
 
   def check_original_text_answer(answer)
     if original_text.casecmp?(answer)
-      reset_review_date
+      true
     else
       false
     end
