@@ -28,6 +28,9 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+#Parsing
+gem 'nokogiri'
+
 #gem simple_form for use form
 gem 'simple_form'
 # Use ActiveStorage variant
