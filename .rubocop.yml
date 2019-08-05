@@ -10,12 +10,33 @@ AllCops:
     - 'test/**/*'
     - 'bin/*'
     - 'config/**/*'
+    - 'spec/fixtures/**/*'
+    - 'spec/rails_helper.rb'
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - 'spec/**/*.rb'
+
+Lint/InterpolationCheck:
+  Exclude:
+    - 'spec/**/*.rb'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'spec/**/*.rb'
+    - '**/*.gemspec'
 
 Metrics/LineLength:
   Enabled: true
   Max: 170
 
 ## Style
+
+Style/BlockComments:
+  Exclude:
+    - 'spec/**/*.rb'
 
 Style/FrozenStringLiteralComment:
   Enabled: false
