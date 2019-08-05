@@ -6,7 +6,7 @@
 <section>
 <% if @card.present? %>
   Переведенный текст: <%= @card.translated_text %>
-  <%= form_tag card_check_original_text_card_path do %>
+  <%= form_tag check_original_text_card_card_path(@card.id) do %>
     <%= hidden_field_tag :id, @card.id %>
     <%= label :answer, 'Оригинальный текст' %>
     <%= text_field_tag :answer %>

@@ -9,11 +9,7 @@ class Card < ApplicationRecord
   scope :dated, -> { where('review_date <= ?', Date.today) }
 
   def check_original_text_answer(answer)
-    if original_text.casecmp?(answer)
-      true
-    else
-      false
-    end
+    original_text.casecmp?(answer)
   end
 
   def reset_review_date

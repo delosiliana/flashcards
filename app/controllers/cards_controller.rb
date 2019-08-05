@@ -38,8 +38,8 @@ class CardsController < ApplicationController
 
   def check_original_text_card
     if @card.check_original_text_answer(params[:answer])
-      redirect_to flashcards_index_path, notice: 'Верно'
       @card.reset_review_date
+      redirect_to flashcards_index_path, notice: 'Верно'
     else
       redirect_to flashcards_index_path, alert: "Не угадал, правильный ответ: #{@card.original_text}"
     end
