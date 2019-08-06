@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe Card, type: :model do
   let(:card) { create(:card) }
   let(:invalid_card) { build(:card, original_text: 'Home', translated_text: 'home') }
-  
   context 'create card' do
     it 'saves successfully' do
       card.save!
