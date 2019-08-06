@@ -43,16 +43,15 @@ RSpec.describe Card, type: :model do
     end
   end
 
+  let(:card) { create(:card, original_text: 'дом') }
   context 'given translate in capital letters' do
     it 'return true' do
-      card = Card.new(original_text: 'дом')
       expect(card.check_original_text_answer('ДоМ')).to be true
     end
   end
 
   context 'given translate in normal letters' do
     it 'return true' do
-      card = Card.new(original_text: 'дом')
       expect(card.check_original_text_answer('дом')).to be true
     end
   end
