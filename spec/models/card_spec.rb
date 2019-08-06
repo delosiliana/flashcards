@@ -1,14 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe Card, type: :model do
+  let(:card) { create(:card) }
+
   context 'create card' do
     it 'saves successfully' do
-      card = create(:card).save
-      expect(card).to eq(true)
+      card.save!
+      expect(card).to eq(card)
     end
 
     it 'has a valid factory' do
-      expect(create(:card)).to be_valid
+      expect(card).to be_valid
     end
 
     it "Invalid original_text equals to translated_text" do
@@ -24,13 +26,10 @@ RSpec.describe Card, type: :model do
   describe '#set_review_date' do
     context 'after create card' do
       it "card's review date will be three days older then today" do
-        card = create(:card)
-        card.save
         expect(card.review_date.to_date - 3).to eql(Time.now.to_date)
       end
 
       it "extract a review_date" do
-        card = create(:card)
         expect(card.review_date).to eq(Date.today + 3.days)
       end
     end
@@ -39,7 +38,6 @@ RSpec.describe Card, type: :model do
   describe '#check_original_text_answer(answer)' do
     context 'given wrong translate' do
       it 'return false' do
-        card = Card.new(original_text: 'дом')
         expect(card.check_original_text_answer('книга')).to be false
       end
     end

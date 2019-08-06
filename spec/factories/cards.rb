@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :card do
-    sequence(:original_text) { |n| "Original text #{n}" }
-    sequence(:translated_text) { |n| "Translated text #{n}" }
+    sequence(:original_text) { |n| "Home #{n}" }
+    sequence(:translated_text) { |n| "дом #{n}" }
   end
 end
