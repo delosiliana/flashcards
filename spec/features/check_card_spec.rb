@@ -16,7 +16,7 @@ RSpec.describe 'Checking translation' do
 
   context 'fill invalide answer' do
     it 'should show success notice' do
-      fill_in 'answer', with: 'test'
+      fill_in 'answer', with: 'invalide text'
       click_button 'Проверить введеный текст'
       expect(page).to have_text 'Не угадал, правильный ответ:'
     end
