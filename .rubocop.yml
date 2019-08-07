@@ -10,8 +10,7 @@ AllCops:
     - 'test/**/*'
     - 'bin/*'
     - 'config/**/*'
-    - 'spec/fixtures/**/*'
-    - 'spec/rails_helper.rb'
+    - 'spec/**/*'
 
 Lint/AmbiguousBlockAssociation:
   Exclude:
@@ -55,4 +54,7 @@ Style/StringLiterals:
   SupportedStyles:
     - single_quotes
     - double_quotes
+
+Style/EndOfLine:
+  EnforcedStyle: lf
 
