@@ -12,13 +12,16 @@ class Card < ApplicationRecord
     original_text.casecmp?(answer)
   end
 
-  def reset_review_date
-    set_review_date
-    save!
+  def reset_review_date!
+    update!(review_date: review_date_removal)
   end
 
   def set_review_date
-    self.review_date = Date.today + 3.days
+    self.review_date = review_date_removal unless review_date
+  end
+
+  def review_date_removal
+    3.days.from_now.to_date
   end
 
   def check_text

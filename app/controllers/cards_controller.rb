@@ -38,7 +38,7 @@ class CardsController < ApplicationController
 
   def check_original_text_card
     if @card.check_original_text_answer(params[:answer])
-      @card.reset_review_date
+      @card.reset_review_date!
       redirect_to root_path, notice: 'Верно'
     else
       redirect_to root_path, alert: "Не угадал, правильный ответ: #{@card.original_text}"
