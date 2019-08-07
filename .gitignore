@@ -40,7 +40,7 @@
 .idea
 
 /doc/examples
-config/database.yml
+#config/database.yml
 config/private_pub.yml
 config/secrets.yml
 
