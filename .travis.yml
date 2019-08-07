@@ -2,11 +2,12 @@ language: ruby
 rvm:
   - 2.5.1
 
-services:
-  - postgresql
+env:
+  - DB=postgresql
 
 script:
   - RAILS_ENV=test bundle exec rake db:create db:migrate --trace
+  - bundle exec rake db:test:prepare
   - bundle exec rspec spec
 
 before_script:
