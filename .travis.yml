@@ -5,6 +5,10 @@ rvm:
 services:
   - postgresql
 
+script:
+  - RAILS_ENV=test bundle exec rake db:create db:migrate --trace
+  - bundle exec rspec spec
+
 before_script:
   - psql -c 'create database flashcards_test;' -U postgres
   - cp config/database.travis.yml config/database.yml
