@@ -31,6 +31,9 @@ gem 'jbuilder', '~> 2.5'
 #Parsing
 gem 'nokogiri'
 
+#Authentication
+gem 'sorcery'
+
 #gem simple_form for use form
 gem 'simple_form'
 # Use ActiveStorage variant
