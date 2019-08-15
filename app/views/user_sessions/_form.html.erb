@@ -1,0 +1,5 @@
+<%= simple_form_for :user, url: user_sessions_path, method: :post do |f| %>
+  <%= f.input :email, label: 'Электронный адрес' %>
+  <%= f.input :password, label: 'Пароль' %>
+  <%= f.button :submit, 'Вход' %>
+<%end%>

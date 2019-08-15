@@ -2,15 +2,15 @@ class CardsController < ApplicationController
   before_action :set_card, only: [:edit, :update, :destroy, :check_original_text_card]
 
   def index
-    @cards = Card.all.on_review_date
+    @cards = current_user.card
   end
 
   def new
-    @card = Card.new
+    @card = current_user.card.build
   end
 
   def create
-    @card = Card.new(card_params)
+    @card = current_user.card.build(card_params)
     if @card.save
       redirect_to cards_path, notice: 'Карточка создана'
     else

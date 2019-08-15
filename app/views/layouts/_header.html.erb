@@ -1,7 +1,11 @@
 <header class="clearfix">
+<% if current_user %>
   <h1>Флэшкарточкер</h1>
-  <ul class="navigation-links">
-    <%= link_to "Все карточки", cards_path, class: 'btn btn-primary' %>
-    <%= link_to "Добавить карточку", new_card_path, class: 'btn btn-secondary' %>
-  </ul>
+    <ul class="navigation-links">
+      <%= link_to "Все карточки", cards_path, class: 'btn btn-primary' %>
+      <%= link_to "Добавить карточку", new_card_path, class: 'btn btn-secondary' %>
+    </ul>
+<% else %>
+      <h3>Пожалуйста войдите в систему</h3>
+<% end %>
 </header>

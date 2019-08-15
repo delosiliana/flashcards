@@ -12,6 +12,24 @@
   </head>
 
   <body>
+    <ul class="nav justify-content-center">
+      <% if current_user %>
+        <li class="nav-item">
+          <%= link_to "Изменить профиль", edit_user_path(current_user.id), class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Выйти", :logout, method: :post, class: 'nav-link' %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to "Зарегистрироваться", new_user_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Войти", :login, class: 'nav-link' %>
+        </li>
+      <% end %>
+    </ul>
+
     <section id="container">
       <%= render 'layouts/header'%>
       <%= yield %>
