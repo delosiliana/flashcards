@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :card
+  has_many :cards
 
   validates :password, length: { minimum: 5 }, if: lambda {
     new_record? || changes[:crypted_password]
