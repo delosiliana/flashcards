@@ -15,4 +15,8 @@ class User < ApplicationRecord
   validates :email, uniqueness: true, presence: true
 
   authenticates_with_sorcery!
+
+  def author?(resource)
+    resource.user_id == id
+  end
 end

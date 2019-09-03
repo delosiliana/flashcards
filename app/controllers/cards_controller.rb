@@ -2,15 +2,15 @@ class CardsController < ApplicationController
   before_action :set_card, only: [:edit, :update, :destroy, :check_original_text_card]
 
   def index
-    @cards = current_user.card.all.on_review_date
+    @cards = current_user.cards.all.on_review_date
   end
 
   def new
-    @card = current_user.card.build
+    @card = current_user.cards.build
   end
 
   def create
-    @card = current_user.card.build(card_params)
+    @card = current_user.cards.build(card_params)
     if @card.save
       redirect_to cards_path, notice: 'Карточка создана'
     else
@@ -21,15 +21,12 @@ class CardsController < ApplicationController
   def edit; end
 
   def update
-    if @card.update(card_params)
-      redirect_to cards_path, notice: 'Карточка изменена'
-    else
-      render :edit
-    end
+    @card.update(card_params) if current_user.author?(@card)
   end
 
   def destroy
-    if @card.destroy
+    if current_user.author?(@card)
+      @card.destroy
       redirect_to cards_path, notice: 'Карточка удалена'
     else
       redirect_to cards_path, notice: 'Произошла ошибка'
