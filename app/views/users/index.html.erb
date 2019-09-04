@@ -14,9 +14,11 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.email %></td>
-        <td><%= link_to 'Детали', user %></td>
-        <td><%= link_to 'Изменить', edit_user_path(user) %></td>
-        <td><%= link_to 'Удалить', user, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+        <% if user === current_user %>
+          <td><%= link_to 'Детали', user %></td>
+          <td><%= link_to 'Изменить', edit_user_path(user) %></td>
+          <td><%= link_to 'Удалить', user, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

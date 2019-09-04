@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   def edit; end
 
   def update
-    if @user.update(user_params)
+    if current_user.update(user_params)
       redirect_to @user, notice: 'Пользователь успешно обновлен.'
     else
       render :edit
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    if @user.destroy
+    if current_user.destroy
       redirect_to users_url, notice: 'Пользователь удален'
     else
       redirect_to root_path, notice: 'Произошла ошибка'
