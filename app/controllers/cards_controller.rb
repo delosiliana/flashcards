@@ -21,7 +21,12 @@ class CardsController < ApplicationController
   def edit; end
 
   def update
-    @card.update(card_params) if current_user.author?(@card)
+    if current_user.author?(@card)
+      @card.update(card_params)
+      redirect_to cards_path, notice: 'Карточка обновлена'
+    else
+      render :edit
+    end
   end
 
   def destroy
