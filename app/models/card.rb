@@ -1,13 +1,13 @@
 class Card < ApplicationRecord
   belongs_to :user
-  
+
   validates :original_text, :translated_text, :review_date, presence: true
   validate :check_text
 
   before_validation :set_review_date, only: :create
 
   scope :on_review_date, -> { order(review_date: :desc) }
-  scope :sort_random, -> { order('RANDOM()') }
+  scope :sort_random, -> { order(Arel.sql('RANDOM()')) }
   scope :dated, -> { where('review_date <= ?', Date.today) }
 
   def check_original_text_answer(answer)
