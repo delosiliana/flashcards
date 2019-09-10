@@ -1,5 +1,7 @@
 <%= simple_form_for @card do |f| %>
   <%= f.input :original_text %>
   <%= f.input :translated_text %>
+  <%= image_tag @card.picture.url, id: 'picture' if @card.picture? %>
+  <%= f.input :picture, as: :file %>
   <%= f.submit %>
 <% end %>

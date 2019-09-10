@@ -5,6 +5,9 @@
 </section>
 <section>
 <% if @card.present? %>
+  <% if @card.picture %>
+    <%= image_tag @card.picture.url, id: 'picture' %>
+  <% end %>
   Переведенный текст: <%= @card.translated_text %>
   <%= form_tag check_original_text_card_card_path(@card.id) do %>
     <%= hidden_field_tag :id, @card.id %>
