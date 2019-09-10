@@ -29,8 +29,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 #Parsing
-gem 'nokogiri'
-
+gem "nokogiri", ">= 1.10.4"
 #Authentication
 gem 'sorcery'
 
