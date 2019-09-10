@@ -51,6 +51,7 @@ config/secrets.yml
 /public/uploads
 /public/spec
 /public/assets
+/public/.DS_Store
 
 
 # coverage files
