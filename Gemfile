@@ -33,6 +33,9 @@ gem "nokogiri", ">= 1.10.4"
 #Authentication
 gem 'sorcery'
 
+#load image
+gem "paperclip", "~> 6.0.0"
+
 #gem simple_form for use form
 gem 'simple_form'
 # Use ActiveStorage variant
