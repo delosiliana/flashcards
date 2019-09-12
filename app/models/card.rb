@@ -1,4 +1,5 @@
 class Card < ApplicationRecord
+  attr_reader :picture_remote_url
   belongs_to :user
 
   validates :original_text, :translated_text, :review_date, presence: true
@@ -32,5 +33,12 @@ class Card < ApplicationRecord
 
   def check_text
     return errors.add(:translated_text, 'Должна быть разница между оригинальным и переведенным текстом') if original_text.casecmp?(translated_text)
+  end
+
+  def picture_remote_url=(url_value)
+    if url_value.present?
+      self.picture = URI.parse(url_value)
+      @picture_remote_url = url_value
+    end
   end
 end

@@ -1,7 +1,10 @@
-<%= simple_form_for @card do |f| %>
+<%= simple_form_for @card, html: { multipart: true } do |f| %>
   <%= f.input :original_text %>
   <%= f.input :translated_text %>
-  <%= image_tag @card.picture.url, id: 'picture' if @card.picture? %>
-  <%= f.input :picture, as: :file %>
+  <p>Выберите изображение</p>
+  <%= image_tag @card.picture.url if @card.picture? %>
+  <%= f.input :picture, as: :file, id: 'picture' %>
+  <p>Или вставьте ссылку на изображение</p>
+  <%= f.input :picture_remote_url, id: 'picture_remote_url' %>
   <%= f.submit %>
 <% end %>

@@ -39,5 +39,11 @@ RSpec.describe 'Checking translation' do
       click_button 'Update Card'
       expect(card.picture).not_to be_nil
     end
+
+    it 'can upload in sait' do
+      fill_in 'card_picture_remote_url', with: 'https://www.royal-canin.ru/upload/iblock/a19/photo_9.jpg'
+      click_button 'Update Card'
+      expect(card.picture).not_to be_nil
+    end
   end
 end
