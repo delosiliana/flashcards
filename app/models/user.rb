@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :cards
+  has_many :decks, dependent: :destroy
 
   validates :password, length: { minimum: 5 }, if: lambda {
     new_record? || changes[:crypted_password]

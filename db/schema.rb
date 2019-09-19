@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_10_053905) do
+ActiveRecord::Schema.define(version: 2019_09_19_084154) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,13 @@ ActiveRecord::Schema.define(version: 2019_09_10_053905) do
     t.integer "picture_file_size"
     t.datetime "picture_updated_at"
     t.index ["user_id"], name: "index_cards_on_user_id"
+  end
+
+  create_table "decks", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|

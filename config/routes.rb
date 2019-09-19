@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :users
   resources :user_sessions
 
+  resources :decks
+
   resources :cards do
     member do
       post 'check_original_text_card'

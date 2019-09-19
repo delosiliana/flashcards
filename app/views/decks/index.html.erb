@@ -1,0 +1,21 @@
+<div class="container">
+<h1><center>Полный список колод</center></h1>
+<% if @decks.empty? %>
+  <h2>Создайте колоду</h2>
+<% else %>
+  <table class = "table">
+    <thead>
+      <tr>
+        <th>Название</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @decks.each do |deck| %>
+        <tr>
+          <td><%= link_to deck.title, deck %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+</div>

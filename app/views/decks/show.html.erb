@@ -1,0 +1,3 @@
+<%= @deck.title %>
+<td><%= link_to 'Редактировать', edit_deck_path(@deck) %></td>
+<td><%= link_to 'Удалить', deck_path(@deck), method: :delete, data: { confirm: 'Вы уверены?'} %></td>
