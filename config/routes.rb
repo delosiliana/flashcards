@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   resources :users
   resources :user_sessions
 
-  resources :decks
+  resources :decks do
+    member do
+      put 'build_current'
+    end
+  end
 
   resources :cards do
     member do

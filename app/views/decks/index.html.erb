@@ -1,18 +1,23 @@
 <div class="container">
 <h1><center>Полный список колод</center></h1>
 <% if @decks.empty? %>
-  <h2>Создайте колоду</h2>
+  <h3>Создайте колоду:</h3>
+  <%= link_to "Добавить колоду", new_deck_path, class: 'btn btn-secondary' %>
 <% else %>
   <table class = "table">
     <thead>
       <tr>
         <th>Название</th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
       <% @decks.each do |deck| %>
         <tr>
           <td><%= link_to deck.title, deck %></td>
+          <td><%= link_to 'Редактировать', edit_deck_path(deck) %></td>
+          <td><%= link_to 'Удалить', deck_path(deck), method: :delete, data: { confirm: 'Вы уверены?'} %></td>
         </tr>
       <% end %>
     </tbody>

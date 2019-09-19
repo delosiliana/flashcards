@@ -6,7 +6,7 @@
         <th>Оригинал</th>
         <th>Перевод</th>
         <th>Дата</th>
-        <th></th>
+        <th>Колода</th>
         <th></th>
       </tr>
     </thead>
@@ -16,6 +16,7 @@
           <td><%= c.original_text %></td>
           <td><%= c.translated_text %></td>
           <td><%= c.review_date&.strftime("%d/%m/%Y") %></td>
+          <td><%= c.deck.title %>
           <td><%= link_to 'Редактировать', edit_card_path(c.id) %></td>
           <td><%= link_to 'Удалить', c, method: :delete, data: { confirm: 'Вы уверены?'} %></td>
         </tr>

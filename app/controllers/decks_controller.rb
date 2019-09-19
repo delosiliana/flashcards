@@ -1,5 +1,5 @@
 class DecksController < ApplicationController
-  before_action :set_deck, only: [:edit, :update, :destroy, :show]
+  before_action :set_deck, only: [:edit, :update, :destroy, :show, :build_current]
 
   def index
     @decks = current_user.decks.order(created_at: :desc)
@@ -38,6 +38,11 @@ class DecksController < ApplicationController
     end
   end
 
+  def build_current
+    @deck.build_current
+    redirect_to @deck
+  end
+
   private
 
   def set_deck
@@ -45,6 +50,6 @@ class DecksController < ApplicationController
   end
 
   def deck_params
-    params.require(:deck).permit(:title, :user_id)
+    params.require(:deck).permit(:title, :user_id, :build_current)
   end
 end

@@ -3,8 +3,9 @@
   <h1>Флэшкарточкер</h1>
     <ul class="navigation-links">
       <%= link_to "Добавить колоду", new_deck_path, class: 'btn btn-secondary' %>
-      <%= link_to "Все карточки", cards_path, class: 'btn btn-primary' %>
+      <%= link_to "Все колоды", decks_path, class: 'btn btn-primary' %>
       <%= link_to "Добавить карточку", new_card_path, class: 'btn btn-secondary' %>
+      <%= link_to "Все карточки", cards_path, class: 'btn btn-primary' %>
     </ul>
 <% else %>
       <h3>Пожалуйста войдите в систему</h3>

@@ -1,4 +1,5 @@
 <%= simple_form_for @card, html: { multipart: true } do |f| %>
+  <%= f.association :deck, collection: current_user.decks %>
   <%= f.input :original_text %>
   <%= f.input :translated_text %>
   <p>Выберите изображение</p>
