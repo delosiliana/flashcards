@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Card, type: :model do
-  let(:card) { create(:card) }
+  let!(:user) { create(:user) }
+  let!(:deck) {create(:deck, user: user)}
+  let(:card) { create(:card, deck: deck, user: user) }
   let(:invalid_card) { build(:card, original_text: 'Home', translated_text: 'home') }
   context 'create card' do
     it 'saves successfully' do
@@ -35,7 +37,7 @@ RSpec.describe Card, type: :model do
   end
 
   describe '#check_original_text_answer(answer)' do
-    let(:card) { create(:card, original_text: 'дом') }
+    let(:card) { create(:card, original_text: 'дом', user: user, deck: deck) }
     context 'given wrong translate' do
       it 'return false' do
         expect(card.check_original_text_answer('книга')).to be false

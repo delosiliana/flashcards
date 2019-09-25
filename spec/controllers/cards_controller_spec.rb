@@ -3,8 +3,10 @@ require 'rails_helper'
 RSpec.describe CardsController, type: :controller do
   let!(:user) { create(:user, email: 'test@test.com') }
   let!(:user2) { create(:user, email: 'test2@test.com') }
-  let!(:card) { create(:card, user: user) }
-  let!(:card2) { create(:card, user: user2) }
+  let!(:deck) { create(:deck, user: user) }
+  let!(:deck2) { create(:deck, user: user2) }
+  let!(:card) { create(:card, user: user, deck: deck) }
+  let!(:card2) { create(:card, user: user2, deck: deck2) }
 
   before(:each) do
     login_user(user, login_url)

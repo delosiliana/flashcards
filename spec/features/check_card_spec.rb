@@ -4,11 +4,12 @@ RSpec.describe 'Checking translation' do
   let!(:password) { 'password' }
   let(:user) { create(:user, password: password, password_confirmation: password) }
   let(:original_text) { 'Home' }
-  let!(:card) { create :card, original_text: original_text, review_date: Date.today, user: user }
+  let!(:deck) { create :deck, user: user }
+  let!(:card) { create :card, original_text: original_text, review_date: Date.today, user: user, deck: deck }
 
   before(:each) do
     visit login_url
-    fill_in :user_email, with: user.email
+    fill_in :user_email, with: deck.user.email
     fill_in :user_password, with: password
     click_button 'Вход'
 
