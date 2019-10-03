@@ -3,7 +3,7 @@ class Card < ApplicationRecord
   belongs_to :user
   belongs_to :deck
 
-  validates :original_text, :translated_text, :review_date, :user_id, :deck_id, presence: true
+  validates :original_text, :translated_text, :review_date, :deck_id, presence: true
   validate :check_text
 
   before_validation :set_review_date, only: :create

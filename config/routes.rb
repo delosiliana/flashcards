@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :decks do
     member do
-      put 'build_current'
+      put 'set_current'
     end
   end
 
