@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :cards
   has_many :decks, dependent: :destroy
+  belongs_to :current_deck, class_name: 'Deck', optional: true
 
   validates :password, length: { minimum: 5 }, if: lambda {
     new_record? || changes[:crypted_password]
@@ -21,8 +22,8 @@ class User < ApplicationRecord
     resource.user_id == id
   end
 
-  def current_deck
-    return nil if current_deck_id.nil?
-    deck.find(current_deck_id)
-  end
+  #def current_deck
+  #  return nil if current_deck_id.nil?
+  #  deck.find(current_deck_id)
+  #end
 end

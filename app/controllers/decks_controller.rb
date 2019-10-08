@@ -16,7 +16,7 @@ class DecksController < ApplicationController
     if @deck.save
       redirect_to decks_path, notice: 'Колода создана'
     else
-      render :new
+      render :new, notice: @deck.errors.full_messages.to_sentence
     end
   end
 
@@ -26,7 +26,7 @@ class DecksController < ApplicationController
     if @deck.update(deck_params)
       redirect_to decks_path, notice: 'Доска обновлена'
     else
-      render :edit
+      render :edit, notice: @deck.errors.full_messages.to_sentence
     end
   end
 
