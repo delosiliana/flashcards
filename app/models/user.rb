@@ -20,4 +20,9 @@ class User < ApplicationRecord
   def author?(resource)
     resource.user_id == id
   end
+
+  def current_deck
+    return nil if current_deck_id.nil?
+    deck.find(current_deck_id)
+  end
 end

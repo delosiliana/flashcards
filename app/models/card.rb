@@ -15,6 +15,7 @@ class Card < ApplicationRecord
   scope :on_review_date, -> { order(review_date: :desc) }
   scope :sort_random, -> { order(Arel.sql('RANDOM()')) }
   scope :dated, -> { where('review_date <= ?', Date.today) }
+  scope :deck, ->(current_deck_id) { expired.where('deck_id ==? ', current_deck_id) }
 
   def check_original_text_answer(answer)
     original_text.casecmp?(answer)

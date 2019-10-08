@@ -32,7 +32,7 @@ class DecksController < ApplicationController
 
   def destroy
     if @deck.destroy
-      redirect_to decks_path, notice: 'Карточка удалена'
+      redirect_to decks_path, notice: 'Колода удалена'
     else
       redirect_to root_path, notice: 'Произошла ошибка'
     end
@@ -50,6 +50,6 @@ class DecksController < ApplicationController
   end
 
   def deck_params
-    params.require(:deck).permit(:title, :user_id, :set_current)
+    params.require(:deck).permit(:title)
   end
 end
