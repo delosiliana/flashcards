@@ -29,7 +29,7 @@ class Card < ApplicationRecord
   end
 
   def review_date_removal
-    1.days.from_now.to_date   #сделала для проверки на сайте, было 3 дня
+    3.days.from_now.to_date
   end
 
   def check_text
