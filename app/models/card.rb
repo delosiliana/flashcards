@@ -23,26 +23,26 @@ class Card < ApplicationRecord
     original_text.casecmp?(answer)
   end
 
-  def reset_review_date!
-    update!(review_date: review_date_removal)
-  end
-
   def set_review_date
     self.review_date = review_date_removal unless review_date
   end
 
   def review_date_removal
-    self.review_date = Date.current - 3.days
+    self.review_date = DateTime.current
   end
 
   def check_try_count
-    update(review_date: DateTime.current + DAYS_INTERVAL[self.try_count].days, try_count: try_count + 1 )
+    if try_count <= 6
+      update(review_date: DateTime.current + DAYS_INTERVAL[self.try_count].days, try_count: try_count + 1 )
+    else
+      review_date_removal
+    end
   end
 
-  def check_false_count
-    update(false_count: false_count + 1)
-    if self.false_count == MAX_MISTAKES
-      update(false_count: 0, try_count: 1, review_date: DateTime.current + 12.hours)
+  def check_mistake_count
+    update(mistake_count: mistake_count + 1)
+    if self.mistake_count == MAX_MISTAKES
+      update(mistake_count: 0, try_count: 1, review_date: DateTime.current + 12.hours)
     end
   end
 

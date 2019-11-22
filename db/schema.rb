@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2019_11_14_171654) do
     t.datetime "picture_updated_at"
     t.integer "deck_id"
     t.integer "try_count", default: 0
-    t.integer "false_count", default: 0
+    t.integer "mistake_count", default: 0
     t.index ["user_id"], name: "index_cards_on_user_id"
   end
 

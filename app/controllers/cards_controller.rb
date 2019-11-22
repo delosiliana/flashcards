@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  before_action :set_card, only: [:edit, :update, :destroy, :check_original_text_card, :reset_review_date]
+  before_action :set_card, only: [:edit, :update, :destroy, :check_original_text_card]
 
   def index
     @cards = current_user.cards.on_review_date
@@ -43,13 +43,9 @@ class CardsController < ApplicationController
       @card.check_try_count
       redirect_to root_path, notice: 'Верно'
     else
-      @card.check_false_count
+      @card.check_mistake_count
       redirect_to root_path, alert: "Не угадал, правильный ответ: #{@card.original_text}"
     end
-  end
-
-  def reset_review_date
-    @card.reset_review_date!
   end
 
   private
