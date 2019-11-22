@@ -32,10 +32,10 @@ class Card < ApplicationRecord
   end
 
   def check_try_count
-    if try_count <= 6
+    if try_count <= 1
       update(review_date: DateTime.current + DAYS_INTERVAL[self.try_count].days, try_count: try_count + 1 )
     else
-      review_date_removal
+      self.review_date = DateTime.current + 30.days
     end
   end
 
