@@ -46,6 +46,7 @@ class CardsController < ApplicationController
       @card.check_mistake_count
       redirect_to root_path, alert: "Не угадал, правильный ответ: #{@card.original_text}"
     end
+    @card.save
   end
 
   private
