@@ -14,7 +14,7 @@ class Card < ApplicationRecord
 
   scope :on_review_date, -> { order(review_date: :desc) }
   scope :sort_random, -> { order(Arel.sql('RANDOM()')) }
-  scope :dated, -> { where('review_date <= ?', DateTime.current) }
+  scope :dated, -> { where('review_date <= ?', Time.now) }
 
   def check_original_text_answer(answer)
     original_text.casecmp?(answer)
@@ -30,12 +30,9 @@ class Card < ApplicationRecord
   end
 
   def check_try_count
-    if self.try_count < 1
       self.try_count += 1
       self.mistake_count = 0
-    else
       set_review_date
-    end
   end
 
   def check_mistake_count
