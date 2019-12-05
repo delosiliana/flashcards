@@ -7,7 +7,6 @@ class Card < ApplicationRecord
   validate :check_text
 
   before_validation :set_review_date, unless: :review_date?
-  before_save :set_review_date
 
   has_attached_file :picture, styles: { original: '360x360>' }
   validates_attachment_content_type :picture,
@@ -22,7 +21,11 @@ class Card < ApplicationRecord
   end
 
   def set_review_date
-    self.review_date = Time.now + repetition_period
+    self.review_date = new_review_date
+  end
+
+  def new_review_date
+    Time.now + repetition_period
   end
 
   def repetition_period
@@ -31,10 +34,10 @@ class Card < ApplicationRecord
   end
 
   def rise_try_count
-    update(try_count: try_count + 1, mistake_count: 0)
+    update(try_count: try_count + 1, mistake_count: 0, review_date: new_review_date)
   end
 
-  def decline_mistake_count
+  def process_mistake
     update(mistake_count: mistake_count + 1)
     update(try_count: 0, mistake_count: 0) if mistake_count == 3
   end

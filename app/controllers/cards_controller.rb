@@ -43,7 +43,7 @@ class CardsController < ApplicationController
       @card.rise_try_count
       redirect_to root_path, notice: 'Верно'
     else
-      @card.decline_mistake_count
+      @card.process_mistake
       redirect_to root_path, alert: "Не угадал, правильный ответ: #{@card.original_text}"
     end
     @card.save
