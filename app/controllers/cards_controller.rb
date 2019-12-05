@@ -40,10 +40,10 @@ class CardsController < ApplicationController
 
   def check_original_text_card
     if @card.check_original_text_answer(params[:answer])
-      @card.check_try_count
+      @card.rise_try_count
       redirect_to root_path, notice: 'Верно'
     else
-      @card.check_mistake_count
+      @card.decline_mistake_count
       redirect_to root_path, alert: "Не угадал, правильный ответ: #{@card.original_text}"
     end
     @card.save
