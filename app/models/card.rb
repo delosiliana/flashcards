@@ -30,9 +30,9 @@ class Card < ApplicationRecord
   end
 
   def check_try_count
-      self.try_count += 1
-      self.mistake_count = 0
-      set_review_date
+    self.try_count += 1
+    self.mistake_count = 0
+    set_review_date
   end
 
   def check_mistake_count
