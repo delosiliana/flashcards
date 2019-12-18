@@ -42,17 +42,16 @@ class CardsController < ApplicationController
     check_result = @card.typo_text(params[:answer])
     if check_result <= 1
       @card.rise_try_count
-      redirect_to root_path
       typo = "Вы ввели ответ #{params[:answer]} но правильный ответ: #{@card.original_text}" if check_result == 1
-      try = "Верно"
+      info = "Верно"
     else
       @card.process_mistake
-      redirect_to root_path, alert: "Не угадал, правильный ответ: #{@card.original_text}"
+      info = "Не угадал, правильный ответ: #{@card.original_text}"
     end
     @card.save
 
-    flash[:notice] = try
-    flash[:notice] = typo
+    flash[:notice] = info
+    redirect_to root_path(typo: typo)
   end
 
   private

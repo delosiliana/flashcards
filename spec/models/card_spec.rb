@@ -33,30 +33,30 @@ RSpec.describe Card, type: :model do
     end
   end
 
-  describe '#check_original_text_answer(answer)' do
+  describe '#typo_text(answer)' do
     let(:card) { create(:card, original_text: 'дом', user: user, deck: deck) }
     context 'given wrong translate' do
       it 'return false' do
-        expect(card.check_original_text_answer('книга')).to be false
+        expect(card.typo_text('книга')).to be > 1
       end
     end
 
     context 'given translate in capital letters' do
       it 'return true' do
-        expect(card.check_original_text_answer('ДоМ')).to be true
+        expect(card.typo_text('ДоМ')).to eql(0)
       end
     end
 
     context 'given translate in normal letters' do
       it 'return true' do
-        expect(card.check_original_text_answer('дом')).to be true
+        expect(card.typo_text('дом')).to eql(0)
       end
     end
 
     context "update review date" do
       it 'correct answer' do
         card.update(try_count: 0, mistake_count: 0, review_date: DateTime.current)
-        expect(card.check_original_text_answer('дом')).to be true
+        expect(card.typo_text('дом')).to eql(0)
         card.rise_try_count
         expect(card.try_count).to eq(1)
         expect(card.review_date).to be_within(1.minute).of(DateTime.current + 12.hours)
@@ -77,7 +77,7 @@ RSpec.describe Card, type: :model do
 
       it "given mistake count" do
         card.update(try_count: 0, mistake_count: 0)
-        expect(card.check_original_text_answer('Домина')).to be false
+        expect(card.typo_text('Домина')).to be > 1
         card.process_mistake
         expect(card.try_count).to eq(0)
         expect(card.mistake_count).to eq(1)

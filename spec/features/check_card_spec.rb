@@ -20,9 +20,18 @@ RSpec.describe 'Checking translation' do
     it 'should show success alert' do
       fill_in 'answer', with: original_text
       click_button 'Проверить введеный текст'
-      expect(page).to have_text 'Верно'
+      expect(page).to have_text "Верно"
     end
   end
+
+  context 'text which typo' do
+      let(:translated_text) { 'hpme' }
+      it "can see '' after tranlsate push" do
+        fill_in 'answer', with: translated_text
+        click_button 'Проверить введеный текст'
+        expect(page).to have_text 'Верно'
+      end
+    end
 
   context 'fill invalide answer' do
     it 'should show success notice' do
