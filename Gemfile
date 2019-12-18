@@ -33,6 +33,9 @@ gem "nokogiri", ">= 1.10.4"
 #Authentication
 gem 'sorcery'
 
+#check text
+gem 'damerau-levenshtein'
+
 #load image
 gem "paperclip", "~> 6.0.0"
 
