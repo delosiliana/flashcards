@@ -29,7 +29,7 @@ RSpec.describe 'Checking translation' do
       it "can see '' after tranlsate push" do
         fill_in 'answer', with: translated_text
         click_button 'Проверить введеный текст'
-        expect(page).to have_text 'Верно'
+        expect(page).to have_text "Вы ввели ответ hpme но правильный ответ: Home"
       end
     end
 
