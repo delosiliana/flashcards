@@ -6,5 +6,5 @@ task :update_feed => :environment do
 end
 
 task :send_mail => :environment do
-  User.send_notifications_mailer
+  Card.send_notifications_mailer
 end
