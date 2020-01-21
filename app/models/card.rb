@@ -17,7 +17,7 @@ class Card < ApplicationRecord
   scope :dated, -> { where('review_date <= ?', Time.now) }
 
   def self.send_notifications_mailer
-    User.joins(:card).merge(Card.dated).uniq.each do |user|
+    User.joins(:cards).merge(Card.dated).uniq.each do |user|
       NotificationsMailer.pending_cards(user).deliver_now
     end
   end
