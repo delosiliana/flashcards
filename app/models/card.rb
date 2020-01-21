@@ -16,6 +16,12 @@ class Card < ApplicationRecord
   scope :sort_random, -> { order(Arel.sql('RANDOM()')) }
   scope :dated, -> { where('review_date <= ?', Time.now) }
 
+  def self.send_notifications_mailer
+    User.joins(:cards).merge(Card.dated).uniq.each do |user|
+      NotificationsMailer.pending_cards(user).deliver_now
+    end
+  end
+
   def typo_text(translated_text)
     DamerauLevenshtein.distance(original_text.downcase, translated_text.downcase)
   end
